@@ -1,0 +1,12 @@
+---
+description: Always include the local dev URL after each update
+alwaysApply: true
+---
+
+# Include the Dev Link
+
+After every update, reply, or completed change, include the local development URL in the user-facing message.
+
+- Default: [http://localhost:3000](http://localhost:3000)
+- If the running `next dev` process is on a different port, use that URL instead
+- Put the link near the end of the response so it is easy to find

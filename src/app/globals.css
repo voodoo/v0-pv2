@@ -555,12 +555,6 @@ a {
   line-height: 1.4;
 }
 
-.section .contact-layout > .contact-form-status.is-success {
-  padding: 1rem 1.1rem;
-  font-size: 1.05rem;
-  line-height: 1.5;
-}
-
 .section .contact-form-status.is-error {
   border-color: color-mix(in oklab, var(--accent) 70%, var(--border));
 }

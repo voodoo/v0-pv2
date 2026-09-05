@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { sendContact, type ContactState } from "@/app/actions/contact";
 
 const SAMPLE_INQUIRY = {
@@ -17,6 +17,12 @@ export function ContactForm() {
   const [email, setEmail] = useState(SAMPLE_INQUIRY.email);
   const [message, setMessage] = useState(SAMPLE_INQUIRY.message);
   const [state, formAction, pending] = useActionState(sendContact, INITIAL_STATE);
+  const statusRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (!state.ok && !state.error) return;
+    statusRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }, [state]);
 
   function fillSample() {
     setName(SAMPLE_INQUIRY.name);
@@ -27,6 +33,7 @@ export function ContactForm() {
   if (state.ok) {
     return (
       <p
+        ref={statusRef}
         className="contact-form-status is-success"
         role="status"
         aria-live="polite"
@@ -89,6 +96,7 @@ export function ContactForm() {
           Use sample
         </button>
         <p
+          ref={statusRef}
           className={
             state.error
               ? "contact-form-status is-error"

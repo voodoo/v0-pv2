@@ -24,6 +24,18 @@ export function ContactForm() {
     setMessage(SAMPLE_INQUIRY.message);
   }
 
+  if (state.ok) {
+    return (
+      <p
+        className="contact-form-status is-success"
+        role="status"
+        aria-live="polite"
+      >
+        Sent. I will reply if it looks like a fit.
+      </p>
+    );
+  }
+
   return (
     <form className="contact-form" action={formAction}>
       <label className="contact-form-honeypot" aria-hidden="true">
@@ -76,21 +88,18 @@ export function ContactForm() {
         <button type="button" className="button-ghost" onClick={fillSample}>
           Use sample
         </button>
-      </div>
-      <p
-        className={
-          state.ok
-            ? "contact-form-status is-success"
-            : state.error
+        <p
+          className={
+            state.error
               ? "contact-form-status is-error"
               : "contact-form-status"
-        }
-        aria-live="polite"
-      >
-        {state.ok
-          ? "Sent. I will reply if it looks like a fit."
-          : (state.error ?? "")}
-      </p>
+          }
+          role="status"
+          aria-live="polite"
+        >
+          {state.error ?? ""}
+        </p>
+      </div>
     </form>
   );
 }

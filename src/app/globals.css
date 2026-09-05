@@ -536,17 +536,33 @@ a {
 }
 
 .contact-form-status {
-  min-height: 1.3em;
+  display: none;
+  flex: 1 1 14rem;
+  align-self: center;
   margin: 0;
-  font-size: 0.88rem;
 }
 
-.contact-form-status.is-success {
-  color: var(--accent);
+.section .contact-form-status.is-success,
+.section .contact-form-status.is-error {
+  display: block;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid color-mix(in oklab, var(--accent) 45%, var(--border));
+  border-radius: 0.75rem;
+  background: var(--accent-soft);
+  color: var(--foreground);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
-.contact-form-status.is-error {
-  color: var(--accent);
+.section .contact-layout > .contact-form-status.is-success {
+  padding: 1rem 1.1rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.section .contact-form-status.is-error {
+  border-color: color-mix(in oklab, var(--accent) 70%, var(--border));
 }
 
 .contact-form label {
